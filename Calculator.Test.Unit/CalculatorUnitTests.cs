@@ -62,5 +62,6 @@ namespace Calculator.Test.Unit
         {
             Assert.That(_uut.Power(x, exp), Is.EqualTo(result));
         }
+
     }
 }
