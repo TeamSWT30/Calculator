@@ -34,7 +34,10 @@ namespace Calculator
                 Accumulator = 0;
                 throw new InvalidOperationException("Number is complex");
             }
+            else
+            {
                 return Accumulator = Math.Pow(a, b);
+            }
         }
 
         public double Divide(double dividend, double divisor)
@@ -42,9 +45,12 @@ namespace Calculator
             if (divisor == 0)
             {
                 Accumulator = 0;
-                throw new DivideByZeroException();
+                throw  new DivideByZeroException();
             }
-            return Accumulator = dividend / divisor;
+            else
+            {
+                return Accumulator = dividend / divisor;
+            }
         }
 
         public void Clear()
