@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Calculator;
 using NUnit.Framework;
 
@@ -87,8 +88,40 @@ namespace Calculator.Test.Unit
         }
 
         [Test]
+        public void TestAccumulatorInitial()
+        {
+            Assert.That(_uut.Accumulator, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void TestAccumulatorError()
+        {
+            try
+            {
+                _uut.Divide(2, 0);
+                _uut.Power(-5, 2.1);
+            }
+            catch (DivideByZeroException e)
+            {
+                Assert.That(_uut.Accumulator, Is.EqualTo(0));
+            }
+            catch (InvalidOperationException e)
+            {
+                Assert.That(_uut.Accumulator, Is.EqualTo(0));
+            }
+        }
+
+        [Test]
         public void TestAccumulator()
         {
+            _uut.Add(2, 2);
+            Assert.That(_uut.Accumulator, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void TestClear()
+        {
+            _uut.Clear();
             Assert.That(_uut.Accumulator, Is.EqualTo(0));
         }
 
